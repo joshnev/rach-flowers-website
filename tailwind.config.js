@@ -6,6 +6,10 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      primary: ['Poppins'],
+      secondary: ['Roboto'],
+    },
   },
   plugins: [],
 };
