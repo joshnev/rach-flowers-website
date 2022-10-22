@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
 
 export default function Home() {
-  return <Layout title="Home">Home Page</Layout>;
+  return <div>Titties123456789</div>;
 }
