@@ -22,12 +22,12 @@ export default function Layout({ title, children }) {
             <div>
               <Link href="/cart">
                 <a className="p-[8px] text-gray-100 hover:bg-pink-400 rounded-full">
-                  Cart
+                  Cart 🛒
                 </a>
               </Link>
               <Link href="/login">
                 <a className="p-[8px] text-gray-100 hover:bg-pink-400 rounded-full">
-                  Logins
+                  Login <span className="text-xl">⌨</span>
                 </a>
               </Link>
             </div>
