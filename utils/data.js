@@ -52,7 +52,7 @@ const data = {
       price: 7.99,
       rating: 4.6,
       numReviews: 7,
-      countInStock: 16,
+      countInStock: 12,
       description: 'I look great on the porch!',
     },
     {

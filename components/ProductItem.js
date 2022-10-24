@@ -14,10 +14,10 @@ export default function ProductItem({ product }) {
           />
         </a>
       </Link>
-      <div className="flex flex-col items-center justify-center p-5">
+      <div className="flex flex-col items-center justify-center p-5 font-primary">
         <Link href={`/product/${product.slug}`}>
           <a>
-            <h2 className="text-lg">{product.name}</h2>
+            <h2 className="text-lg text-slate-800">{product.name}</h2>
           </a>
         </Link>
         <p className="mb-[8px]">{product.brand}</p>
