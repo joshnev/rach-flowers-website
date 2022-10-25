@@ -1,17 +1,33 @@
 import data from '../../utils/data';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useContext } from 'react';
 import Layout from '../../components/Layout';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Store } from '../../utils/Store';
 
 export default function ProductScreen() {
+  const { state, dispatch } = useContext(Store);
+
   const { query } = useRouter();
   const { slug } = query;
   const product = data.products.find((x) => x.slug === slug);
   if (!product) {
     return <div>Prouct Not Found</div>;
   }
+
+  const addToCartHandler = () => {
+    const existItem = state.cart.cartItems.find((x) => x.slug === product.slug);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+
+    if (product.countInStock < quantity) {
+      alert('Product is out of stock');
+      return;
+    }
+
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
+  };
+
   return (
     <Layout title={product.name}>
       <div className="py-[8px] font-primary cursor-pointer pb-5">
@@ -58,7 +74,10 @@ export default function ProductScreen() {
               <div>{product.countInStock > 0 ? 'In Stock' : 'Unavailble'}</div>
             </div>
             <div className="flex">
-              <button className="primary-button mx-auto">
+              <button
+                className="primary-button mx-auto"
+                onClick={addToCartHandler}
+              >
                 Add to your cart
               </button>
             </div>
