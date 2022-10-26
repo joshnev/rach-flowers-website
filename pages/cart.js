@@ -12,17 +12,24 @@ export default function CartScreen() {
   const {
     cart: { cartItems },
   } = state;
-
   const removeItemHandler = (item) => {
     dispatch({ type: 'CART_REMOVE_ITEM', payload: item });
   };
-
+  const updateCartHandler = (item, qty) => {
+    const quantity = Number(qty);
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
+  };
   return (
     <Layout title="Shopping Cart">
-      <h1 className="mb-4 text-xl font-primary">Shopping Cart</h1>
+      <h1 className="mb-4 text-xl font-primary font-bold">Shopping Cart</h1>
       {cartItems.length === 0 ? (
-        <div>
-          Cart is empty. <Link href="/">Shop Flowers Here</Link>
+        <div className="font-primary">
+          Cart is empty.{' '}
+          <Link href="/">
+            <span className="cursor-pointer font-semibold rounded-[10px] p-2 text-white bg-pink-500">
+              Shop Flowers Here
+            </span>
+          </Link>
         </div>
       ) : (
         <div className="grid md:grid-cols-4 md:gap-5 font-primary">
@@ -54,7 +61,21 @@ export default function CartScreen() {
                         </a>
                       </Link>
                     </td>
-                    <td className="p-5 text-right">{item.quantity}</td>
+                    <td className="p-5 text-right">
+                      <select
+                        className="rounded-[10px] hover:text-white hover:bg-pink-400"
+                        value={item.quantity}
+                        onChange={(e) =>
+                          updateCartHandler(item, e.target.value)
+                        }
+                      >
+                        {[...Array(item.countInStock).keys()].map((x) => (
+                          <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
                     <td className="p-5 text-right">£{item.price}</td>
                     <td className="p-5 text-center">
                       <button onClick={() => removeItemHandler(item)}>
