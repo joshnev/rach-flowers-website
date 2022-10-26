@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Head from 'next/head';
 import Link from 'next/link';
 import React, { useContext } from 'react';
