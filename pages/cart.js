@@ -5,8 +5,9 @@ import { Store } from '../utils/Store';
 import Image from 'next/image';
 import { XCircleIcon } from '@heroicons/react/outline';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
-export default function CartScreen() {
+function CartScreen() {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const {
@@ -87,18 +88,21 @@ export default function CartScreen() {
               </tbody>
             </table>
           </div>
-          <div className="card p-5">
+          <div className="card p-5 mt-2">
             <ul>
               <li>
-                <div className="p-3">
+                <div className="p-3 flex justify-between">
                   Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}){' '}
                   {''}: £
                   {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
+                  {/* <div className="text-white text-sm p-2 rounded-[8px] bg-red-500 hover:bg-red-500/80 flex-2">
+                    <a href={'/'}>Forget something?</a>
+                  </div> */}
                 </div>
               </li>
               <li>
                 <button
-                  onClick={() => router.push('/shipping')}
+                  onClick={() => router.push('login?redirect=/shipping')}
                   className="primary-button w-full"
                 >
                   Check Out
@@ -111,3 +115,5 @@ export default function CartScreen() {
     </Layout>
   );
 }
+
+export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });
