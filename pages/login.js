@@ -95,7 +95,11 @@ export default function LoginScreen() {
         </div>
         <div className="mb-4">
           <span className="mr-3 font-semibold">Need an account?</span>
-          <Link href="register">Register here...</Link>
+          <Link href="register">
+            <a className="text-blue-700 hover:text-blue-800">
+              Register here...
+            </a>
+          </Link>
         </div>
       </form>
     </Layout>

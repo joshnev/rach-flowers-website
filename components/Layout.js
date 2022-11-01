@@ -5,12 +5,14 @@ import { useSession } from 'next-auth/react';
 import { Store } from '../utils/Store';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ModalMenu from './ModalMenu';
 
 export default function Layout({ title, children }) {
   const { status, data: session } = useSession();
 
   const { state } = useContext(Store);
   const { cart } = state;
+  const [modalMenu, setModalMenu] = useState(false);
   const [cartItemsCount, setCartItemsCount] = useState(0);
   useEffect(() => {
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
@@ -46,9 +48,23 @@ export default function Layout({ title, children }) {
               {status === 'loading' ? (
                 'loading'
               ) : session?.user ? (
-                <a className="text-pink-900 font-semibold">
-                  {session.user.name}
-                </a>
+                <>
+                  <span
+                    onClick={() => setModalMenu(!modalMenu)}
+                    className="text-pink-900 font-semibold cursor-pointer"
+                  >
+                    {session.user.name}
+                  </span>
+
+                  <div
+                    className={`${
+                      modalMenu ? 'max-h-[154px]' : 'max-h-0'
+                    }  absolute z-20 right-0 rounded-md overflow-hidden shadow-2xl transition-all
+                  }`}
+                  >
+                    <ModalMenu />
+                  </div>
+                </>
               ) : (
                 <Link href="/login">
                   <a className="p-[8px] text-gray-100 hover:bg-pink-400 rounded-full">
