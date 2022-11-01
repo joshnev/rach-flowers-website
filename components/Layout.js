@@ -1,9 +1,14 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import React, { useContext, useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
 import { Store } from '../utils/Store';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Layout({ title, children }) {
+  const { status, data: session } = useSession();
+
   const { state } = useContext(Store);
   const { cart } = state;
   const [cartItemsCount, setCartItemsCount] = useState(0);
@@ -17,6 +22,7 @@ export default function Layout({ title, children }) {
         <meta name="description" content="Ecommerce flower website" />
         <link rel="icon" href="/" />
       </Head>
+      <ToastContainer position="bottom-center" limit={1} />
       <div className="flex min-h-screen flex-col justify-between">
         <header>
           <nav className="flex h-[55px] px-4 justify-between items-center shadow-lg font-primary bg-pink-500/50">
@@ -37,11 +43,19 @@ export default function Layout({ title, children }) {
                   )}
                 </a>
               </Link>
-              <Link href="/login">
-                <a className="p-[8px] text-gray-100 hover:bg-pink-400 rounded-full">
-                  Login <span className="text-xl">⌨</span>
+              {status === 'loading' ? (
+                'loading'
+              ) : session?.user ? (
+                <a className="text-pink-900 font-semibold">
+                  {session.user.name}
                 </a>
-              </Link>
+              ) : (
+                <Link href="/login">
+                  <a className="p-[8px] text-gray-100 hover:bg-pink-400 rounded-full">
+                    Login
+                  </a>
+                </Link>
+              )}
             </div>
           </nav>
         </header>
