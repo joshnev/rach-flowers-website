@@ -21,3 +21,7 @@ body {
 .primary-button {
   @apply rounded bg-pink-500 text-white py-2 px-4 shadow outline-none hover:bg-pink-400;
 }
+
+.default-button {
+  @apply rounded bg-gray-100 text-black py-2 px-4 shadow outline-none hover:bg-gray-200;
+}
