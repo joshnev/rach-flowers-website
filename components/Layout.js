@@ -39,7 +39,7 @@ export default function Layout({ title, children }) {
                 <a className="p-[8px] text-gray-100 hover:bg-pink-400 rounded-full">
                   Cart 🛒
                   {cartItemsCount > 0 && (
-                    <span className="ml-1 rounded-full bg-red-600 px-2  text-as font-bold text-white">
+                    <span className="ml-1 rounded-[50%] bg-red-600 px-2 font-bold text-white">
                       {cartItemsCount}
                     </span>
                   )}
@@ -51,7 +51,7 @@ export default function Layout({ title, children }) {
                 <>
                   <span
                     onClick={() => setModalMenu(!modalMenu)}
-                    className="text-pink-900 font-semibold cursor-pointer"
+                    className="text-white hover:text-pink-700 cursor-pointer"
                   >
                     {session.user.name}
                   </span>
@@ -59,7 +59,7 @@ export default function Layout({ title, children }) {
                   <div
                     className={`${
                       modalMenu ? 'max-h-[154px]' : 'max-h-0'
-                    }  absolute z-20 right-0 rounded-md overflow-hidden shadow-2xl transition-all
+                    }  absolute z-20 right-0 mt-[4px] rounded-md overflow-hidden shadow-2xl transition-all
                   }`}
                   >
                     <ModalMenu />
