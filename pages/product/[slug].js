@@ -47,7 +47,7 @@ export default function ProductScreen() {
             className="rounded-[8px]"
           ></Image>
         </div>
-        <div className="font-primary">
+        <div className="font-primary mt-2">
           <ul>
             <li>
               <h1 className="text-lg font-bold">{product.name}</h1>

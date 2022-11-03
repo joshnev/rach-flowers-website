@@ -4,16 +4,19 @@ import React from 'react';
 
 export default function ProductItem({ product }) {
   return (
-    <div className="card">
-      <Link href={`/product/${product.slug}`}>
-        <a>
-          <img
-            src={product.image}
-            alt={product.name}
-            className="rounded shadow"
-          />
-        </a>
-      </Link>
+    <div className="card max-w-[500px] mx-auto">
+      <div className="max-w-[500px] mx-auto">
+        <Link href={`/product/${product.slug}`}>
+          <a>
+            <img
+              src={product.image}
+              alt={product.name}
+              className="rounded shadow"
+            />
+          </a>
+        </Link>
+      </div>
+
       <div className="flex flex-col items-center justify-center p-5 font-primary">
         <Link href={`/product/${product.slug}`}>
           <a>
