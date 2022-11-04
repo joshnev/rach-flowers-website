@@ -17,7 +17,7 @@ export default function Home({ products }) {
     const { data } = await axios.get(`/api/products/${product._id}`);
 
     if (data.countInStock < quantity) {
-      toast.error('Product is out of stock');
+      return toast.error('Product is out of stock');
     }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
 

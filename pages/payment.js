@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import CheckoutWizzard from '../components/CheckoutWizzard';
+import CheckoutWizard from '../components/CheckoutWizard';
 import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
 
@@ -40,7 +40,7 @@ export default function PaymentScreen() {
 
   return (
     <Layout title="Payment Screen">
-      <CheckoutWizzard activeStep={2} />
+      <CheckoutWizard activeStep={2} />
       {/* form for payment */}
       <form className="mx-auto max-w-screen-md" onSubmit={submitHandler}>
         <h1 className="mb-[16px] text-lg">Payment</h1>
@@ -73,3 +73,5 @@ export default function PaymentScreen() {
     </Layout>
   );
 }
+
+PaymentScreen.auth = true;

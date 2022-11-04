@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 export default function ProductItem({ product, addToCartHandler }) {
   return (
+    // product card with image
     <div className="card max-w-[500px] mx-auto">
       <div className="max-w-[500px] mx-auto">
         <Link href={`/product/${product.slug}`}>
@@ -15,7 +16,7 @@ export default function ProductItem({ product, addToCartHandler }) {
           </a>
         </Link>
       </div>
-
+      {/* product info */}
       <div className="flex flex-col items-center justify-center p-5 font-primary">
         <Link href={`/product/${product.slug}`}>
           <a>
