@@ -33,3 +33,11 @@ body {
 .default-button-1 {
   @apply rounded bg-gray-100 text-black py-1 px-4 shadow outline-none hover:bg-gray-200;
 }
+
+.alert-error {
+  @apply my-3 rounded-lg bg-red-500/80 p-3 text-white;
+}
+
+.alert-success {
+  @apply my-3 rounded-lg bg-red-100 p-3 text-green-200;
+}
