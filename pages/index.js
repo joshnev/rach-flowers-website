@@ -21,11 +21,7 @@ export default function Home({ products }) {
     }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
 
-    toast.success(
-      <div className="bg-pink-400 rounded-full">
-        <div className="text-white mx-5 my-5">Product added to the cart</div>
-      </div>
-    );
+    toast.success(<div>Product added to the cart</div>);
   };
 
   return (
