@@ -49,6 +49,7 @@ const data = {
       countInStock: 16,
       description: 'Make me into a chain!',
     },
+    // fix bug
     {
       name: 'Mixed Autumn Flowers',
       slug: 'mixed-autumn-flower',
