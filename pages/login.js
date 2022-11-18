@@ -95,10 +95,10 @@ export default function LoginScreen() {
         </div>
         <div className="mb-4">
           <span className="mr-3 font-semibold">Need an account?</span>
-          <Link href="register">
-            <a className="text-blue-700 hover:text-blue-800">
+          <Link href={`/register?redirect=${redirect || '/'}`}>
+            <span className="text-pink-500 cursor-pointer hover:text-pink-600">
               Register here...
-            </a>
+            </span>
           </Link>
         </div>
       </form>

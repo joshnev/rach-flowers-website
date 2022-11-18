@@ -77,7 +77,7 @@ export default function Layout({ title, children }) {
         </header>
         <main className="container m-auto mt-6 px-3">{children}</main>
         <footer className="flex h-[40px] justify-center items-center shadown-inner">
-          Copyright © JN 2022
+          Copyright © Rach Flowers 2022
         </footer>
       </div>
     </>

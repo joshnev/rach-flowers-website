@@ -27,6 +27,7 @@ function CartScreen() {
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
     toast.success('Items updated!');
   };
+
   return (
     <Layout title="Shopping Cart">
       <h1 className="mb-4 text-xl font-primary font-bold">Shopping Cart</h1>

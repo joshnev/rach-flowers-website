@@ -158,6 +158,15 @@ function OrderScreen() {
                     <div>£{totalPrice}</div>
                   </div>
                 </li>
+                {/* {!isPaid && (
+                  <li>
+                    {isPending ? (
+                      <div>Loading...</div>
+                    ) : (
+                      <div className="w-full">Test</div>
+                    )}
+                  </li>
+                )} */}
               </ul>
             </div>
           </div>
