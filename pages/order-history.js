@@ -74,7 +74,9 @@ function OrderHistoryPage() {
                   </td>
                   <td className="p-5">
                     <Link href={`/order/${order._id}`} passHref>
-                      <a>Details</a>
+                      <a className="text-pink-400 hover:text-pink-600">
+                        Details
+                      </a>
                     </Link>
                   </td>
                 </tr>

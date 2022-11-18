@@ -18,12 +18,14 @@ export default function ModalMenu() {
       <ul className="text-white space-y-3">
         <li>
           <Link href="/profile">
-            <span className="hover:bg-pink-500 rounded-[8px] p-1">Profile</span>
+            <span className="hover:bg-pink-500 rounded-[8px] p-1 cursor-pointer">
+              Profile
+            </span>
           </Link>
         </li>
         <li>
           <Link href="/order-history">
-            <span className="hover:bg-pink-500 rounded-[8px] p-1">
+            <span className="hover:bg-pink-500 rounded-[8px] p-1 cursor-pointer">
               Order History
             </span>
           </Link>
@@ -31,7 +33,7 @@ export default function ModalMenu() {
         <li>
           <Link href="#">
             <a
-              className="hover:bg-pink-500 rounded-[8px] p-1"
+              className="hover:bg-pink-500 rounded-[8px] p-1 cursor-pointer"
               onClick={logoutClickHandler}
             >
               Logout
