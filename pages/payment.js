@@ -7,25 +7,25 @@ import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
 
 export default function PaymentScreen() {
-  const [selectedPayment, setSelectedPayment] = useState('');
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
 
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
-  const { shippingAddress, payment } = cart;
+  const { shippingAddress, paymentMethod } = cart;
 
   const router = useRouter();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (!selectedPayment) {
+    if (!selectedPaymentMethod) {
       return toast.error('Payment selection is required');
     }
-    dispatch({ type: 'SAVE_PAYMENT_METHOD, payload: selectedPayment' });
+    dispatch({ type: 'SAVE_PAYMENT_METHOD', payload: selectedPaymentMethod });
     Cookies.set(
       'cart',
       JSON.stringify({
         ...cart,
-        payment: selectedPayment,
+        paymentMethod: selectedPaymentMethod,
       })
     );
 
@@ -35,11 +35,11 @@ export default function PaymentScreen() {
     if (!shippingAddress.address) {
       return router.push('/shipping');
     }
-    setSelectedPayment(payment || '');
-  }, [payment, router, shippingAddress.address]);
+    setSelectedPaymentMethod(paymentMethod || '');
+  }, [paymentMethod, router, shippingAddress.address]);
 
   return (
-    <Layout title="Payment Screen">
+    <Layout title="Payment Method">
       <CheckoutWizard activeStep={2} />
       {/* form for payment */}
       <form className="mx-auto max-w-screen-md" onSubmit={submitHandler}>
@@ -47,12 +47,12 @@ export default function PaymentScreen() {
         {['Stripe', 'Cash on delivery'].map((payment) => (
           <div key={payment} className="mb-4">
             <input
-              name="paymentType"
+              name="paymentMethod"
               className="p-[8px] outline-none focus:ring-0"
               id={payment}
               type="radio"
-              checked={selectedPayment === payment}
-              onChange={() => setSelectedPayment(payment)}
+              checked={selectedPaymentMethod === payment}
+              onChange={() => setSelectedPaymentMethod(payment)}
             />
             <label className="p-[8px]" htmlFor={payment}>
               {payment}
